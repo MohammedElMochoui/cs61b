@@ -116,20 +116,6 @@ public class ArrayDeque<T> {
         return items[(firstIndex + i) % capacity];
     }
 
-    private class ArrayDequeIterator implements Iterator<T> {
-        private int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return index + firstIndex <= size;
-        }
-
-        @Override
-        public T next() {
-            return items[(firstIndex + index++) % capacity];
-        }
-    }
-
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
     }
@@ -146,38 +132,17 @@ public class ArrayDeque<T> {
         return true;
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> arr = new ArrayDeque<>();
-        for (int i = 0; i < 32; i++) {
-            arr.addLast(i);
+    private class ArrayDequeIterator implements Iterator<T> {
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index + firstIndex <= size;
         }
 
-        for (int i = 0; i < 32; i++) {
-            arr.removeLast();
+        @Override
+        public T next() {
+            return items[(firstIndex + index++) % capacity];
         }
-
-        arr.printDeque();
-        arr.addLast(10);
-        arr.removeFirst();
-        arr.printDeque();
-//        arr.printDeque();
-//        arr.removeFirst();
-//        arr.printDeque();
-//        arr.removeLast();
-//        arr.printDeque();
-//        System.out.println(arr.get(0));
-//        System.out.println(arr.get(1));
-//        System.out.println(arr.get(2));
-//        Iterator<Integer> iterator = arr.iterator();
-//
-//        System.out.println("Iterator below ---");
-//        while (iterator.hasNext()){
-//            System.out.println(iterator.next());
-//        }
-//
-//        ArrayDeque<Integer> arr2 = new ArrayDeque<>();
-//        arr2.addLast(0);
-//        arr2.addLast(1);
-//        System.out.println(arr.equals(arr2));
     }
 }
