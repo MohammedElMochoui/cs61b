@@ -190,20 +190,4 @@ public class LinkedListDeque<T> implements Iterable<T> {
             return curr.getValue();
         }
     }
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> l = new LinkedListDeque<>();
-        l.addLast(1);
-        l.addLast(2);
-        l.addLast(3);
-        l.addLast(4);
-        l.addLast(5);
-        l.printDeque();
-        System.out.println(l.getRecursive(0));
-        System.out.println(l.getRecursive(1));
-        System.out.println(l.getRecursive(2));
-        System.out.println(l.getRecursive(3));
-        System.out.println(l.getRecursive(4));
-        System.out.println(l.getRecursive(5));
-    }
 }
