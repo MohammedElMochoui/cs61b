@@ -100,7 +100,8 @@ public class LinkedListDeque<T> {
 
     public boolean equals(Object other) {
         if (this == other) return true;
-        if (other instanceof LinkedListDeque otherL) {
+        if (other instanceof LinkedListDeque) {
+            LinkedListDeque otherL = (LinkedListDeque) other;
             if (this.size() != otherL.size) return false;
             for (int i = 0; i < size; i++) {
                 if (!get(i).equals(otherL.get(i))) return false;

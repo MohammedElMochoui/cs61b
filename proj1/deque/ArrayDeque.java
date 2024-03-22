@@ -123,7 +123,8 @@ public class ArrayDeque<T> {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj instanceof ArrayDeque otherArrayDeque) {
+        if (obj instanceof ArrayDeque) {
+            ArrayDeque otherArrayDeque = (ArrayDeque) obj;
             if (size != otherArrayDeque.size()) return false;
             for (int i = 0; i < size; i++) {
                 if (!get(i).equals(otherArrayDeque.get(i))) return false;
