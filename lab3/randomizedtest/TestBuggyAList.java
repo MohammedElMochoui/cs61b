@@ -44,6 +44,7 @@ public class TestBuggyAList {
                     System.out.println("(L) addLast(" + randVal + ")");
                     B.addLast(randVal);
                     System.out.println("(B) addLast(" + randVal + ")");
+                    break;
                 }
                 case 1: {
                     // getLast
@@ -55,6 +56,7 @@ public class TestBuggyAList {
                     int bInt = B.getLast();
                     System.out.printf("(B) getLast(%d)%n", bInt);
                     assertEquals(lInt, bInt);
+                    break;
                 }
                 case 2: {
                     // removeLast
@@ -66,6 +68,7 @@ public class TestBuggyAList {
                     int bInt = B.removeLast();
                     System.out.printf("(B) removeLast(%d)%n", bInt);
                     assertEquals(lInt, bInt);
+                    break;
                 }
                 case 3: {
                     // size
@@ -75,6 +78,7 @@ public class TestBuggyAList {
                     int sizeB = B.size();
                     System.out.println("(B) size: " + sizeB);
                     assertEquals(sizeL, sizeB);
+                    break;
                 }
             }
         }
