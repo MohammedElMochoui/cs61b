@@ -1,8 +1,9 @@
 package deque;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Iterable<T> {
     private int size;
     private final ListNode<T> sentinel;
     public LinkedListDeque() {
@@ -68,6 +69,24 @@ public class LinkedListDeque<T> {
         return curr.getValue();
     }
 
+    private class RecursionHelper {
+        Iterator<T> iterator = iterator();
+
+        public T getRecursive(int i) {
+            T curr = iterator.next();
+            if (i != 0) {
+                return getRecursive(i - 1);
+            }
+            return curr;
+        }
+    }
+
+    public T getRecursive(int i){
+        if (i < 0 || i > size) return null;
+        RecursionHelper r = new RecursionHelper();
+        return r.getRecursive(i);
+    }
+
     public void addLast(T item) {
         ListNode<T> itemNode = new ListNode<>(item, sentinel.getPrevious(), sentinel);
         itemNode.getPrevious().setNext(itemNode);
@@ -94,7 +113,7 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new LinkedListDequeIterator();
     }
 
@@ -170,5 +189,21 @@ public class LinkedListDeque<T> {
             curr = curr.getNext();
             return curr.getValue();
         }
+    }
+
+    public static void main(String[] args) {
+        LinkedListDeque<Integer> l = new LinkedListDeque<>();
+        l.addLast(1);
+        l.addLast(2);
+        l.addLast(3);
+        l.addLast(4);
+        l.addLast(5);
+        l.printDeque();
+        System.out.println(l.getRecursive(0));
+        System.out.println(l.getRecursive(1));
+        System.out.println(l.getRecursive(2));
+        System.out.println(l.getRecursive(3));
+        System.out.println(l.getRecursive(4));
+        System.out.println(l.getRecursive(5));
     }
 }
