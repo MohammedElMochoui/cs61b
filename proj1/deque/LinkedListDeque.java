@@ -1,11 +1,11 @@
 package deque;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
-public class LinkedListDeque<T> implements Iterable<T> {
-    private int size;
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private final ListNode<T> sentinel;
+    private int size;
+
     public LinkedListDeque() {
         size = 0;
         sentinel = new ListNode<T>(null, null, null);
@@ -69,19 +69,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return curr.getValue();
     }
 
-    private class RecursionHelper {
-        Iterator<T> iterator = iterator();
-
-        public T getRecursive(int i) {
-            T curr = iterator.next();
-            if (i != 0) {
-                return getRecursive(i - 1);
-            }
-            return curr;
-        }
-    }
-
-    public T getRecursive(int i){
+    public T getRecursive(int i) {
         if (i < 0 || i > size) return null;
         RecursionHelper r = new RecursionHelper();
         return r.getRecursive(i);
@@ -92,10 +80,6 @@ public class LinkedListDeque<T> implements Iterable<T> {
         itemNode.getPrevious().setNext(itemNode);
         sentinel.setPrevious(itemNode);
         size++;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int size() {
@@ -127,6 +111,18 @@ public class LinkedListDeque<T> implements Iterable<T> {
             }
         }
         return true;
+    }
+
+    private class RecursionHelper {
+        Iterator<T> iterator = iterator();
+
+        public T getRecursive(int i) {
+            T curr = iterator.next();
+            if (i != 0) {
+                return getRecursive(i - 1);
+            }
+            return curr;
+        }
     }
 
     private class ListNode<T> {

@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T>{
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T[] items;
     private int size;
     private int capacity;
@@ -51,6 +51,9 @@ public class ArrayDeque<T> implements Iterable<T>{
     }
 
     private void grow() {
+        double percentage = ((double) size / capacity) * 100;
+        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
+
         int newCapacity = capacity * 2;
         T[] arr = (T[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
@@ -63,6 +66,9 @@ public class ArrayDeque<T> implements Iterable<T>{
     }
 
     private void shrink() {
+        double percentage = ((double) size / capacity) * 100;
+        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
+
         int newCapacity = capacity / 2;
         T[] arr = (T[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
@@ -72,10 +78,6 @@ public class ArrayDeque<T> implements Iterable<T>{
         lastIndex = size - 1;
         items = arr;
         capacity = newCapacity;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int size() {
@@ -116,6 +118,7 @@ public class ArrayDeque<T> implements Iterable<T>{
         return items[(firstIndex + i) % capacity];
     }
 
+    @Override
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
     }
@@ -138,7 +141,7 @@ public class ArrayDeque<T> implements Iterable<T>{
 
         @Override
         public boolean hasNext() {
-            return index + firstIndex <= size;
+            return index < size;
         }
 
         @Override
