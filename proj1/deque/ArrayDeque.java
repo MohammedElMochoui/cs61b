@@ -52,7 +52,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private void grow() {
         double percentage = ((double) size / capacity) * 100;
-        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
+//        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
 
         int newCapacity = capacity * 2;
         T[] arr = (T[]) new Object[newCapacity];
@@ -67,7 +67,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private void shrink() {
         double percentage = ((double) size / capacity) * 100;
-        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
+//        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
 
         int newCapacity = capacity / 2;
         T[] arr = (T[]) new Object[newCapacity];

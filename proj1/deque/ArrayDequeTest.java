@@ -100,7 +100,7 @@ public class ArrayDequeTest {
             l.addLast(i);
         }
         for (Integer i : l) {
-            System.out.println(i);
+//            System.out.println(i);
         }
     }
 
