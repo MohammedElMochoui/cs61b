@@ -10,10 +10,11 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         this.c = c;
     }
 
-    public T max(Comparator<T> c) {
-        // if no comparator is provided, use default
-        c = c == null ? this.c : c;
+    public T max() {
+        return max(c);
+    }
 
+    public T max(Comparator<T> c) {
         if (this.isEmpty()) return null;
         T max = this.get(0);
         for (T item : this) {
