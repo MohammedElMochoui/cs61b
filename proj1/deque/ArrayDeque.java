@@ -9,7 +9,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private int firstIndex;
     private int lastIndex;
 
-    ArrayDeque() {
+    public ArrayDeque() {
         capacity = 8;
         items = (T[]) new Object[capacity];
         size = 0;
@@ -157,8 +157,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
                     return false;
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     private class ArrayDequeIterator implements Iterator<T> {

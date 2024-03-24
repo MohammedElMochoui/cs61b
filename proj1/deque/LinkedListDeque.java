@@ -128,8 +128,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
                     return false;
                 }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     private class RecursionHelper {
