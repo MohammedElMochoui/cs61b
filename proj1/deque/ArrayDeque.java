@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
+class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T[] items;
     private int size;
     private int capacity;
@@ -31,8 +31,12 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         firstIndex = index;
         size++;
 
-        if (size == 1) lastIndex = index;
-        if (size == capacity) grow();
+        if (size == 1) {
+            lastIndex = index;
+        }
+        if (size == capacity) {
+            grow();
+        }
     }
 
     private int incrementIndex(int i) {
@@ -46,13 +50,16 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         lastIndex = index;
         size++;
 
-        if (size == 1) firstIndex = index;
-        if (size == capacity) grow();
+        if (size == 1) {
+            firstIndex = index;
+        }
+        if (size == capacity) {
+            grow();
+        }
     }
 
     private void grow() {
         double percentage = ((double) size / capacity) * 100;
-//        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
 
         int newCapacity = capacity * 2;
         T[] arr = (T[]) new Object[newCapacity];
@@ -67,7 +74,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private void shrink() {
         double percentage = ((double) size / capacity) * 100;
-//        System.out.printf("Size: %d - Capacity: %d - Percentage %f%%%n", size, capacity, percentage);
 
         int newCapacity = capacity / 2;
         T[] arr = (T[]) new Object[newCapacity];
@@ -92,29 +98,39 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public T removeFirst() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
 
         T item = items[firstIndex];
         firstIndex = incrementIndex(firstIndex);
         size--;
 
-        if (capacity > 16 && size < (capacity / 4)) shrink();
+        if (capacity > 16 && size < (capacity / 4)) {
+            shrink();
+        }
         return item;
     }
 
     public T removeLast() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
 
         T item = items[lastIndex];
         lastIndex = decrementIndex(lastIndex);
         size--;
 
-        if (capacity > 16 && size < (capacity / 4)) shrink();
+        if (capacity > 16 && size < (capacity / 4)) {
+            shrink();
+        }
         return item;
     }
 
     public T get(int i) {
-        if (i >= size) return null;
+        if (i >= size) {
+            return null;
+        }
         return items[(firstIndex + i) % capacity];
     }
 
@@ -125,18 +141,22 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
+        if (this == obj) {
+            return true;
+        }
         if (obj instanceof ArrayDeque) {
             ArrayDeque otherArrayDeque = (ArrayDeque) obj;
             if (size != otherArrayDeque.size()) return false;
             for (int i = 0; i < size; i++) {
-                if (!get(i).equals(otherArrayDeque.get(i))) return false;
+                if (!get(i).equals(otherArrayDeque.get(i))) {
+                    return false;
+                }
             }
         }
         return true;
     }
 
-    private class ArrayDequeIterator implements Iterator<T> {
+    class ArrayDequeIterator implements Iterator<T> {
         private int index = 0;
 
         @Override

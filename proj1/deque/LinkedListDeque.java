@@ -26,7 +26,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public T removeFirst() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
         ListNode<T> first = sentinel.getNext();
         sentinel.setNext(first.getNext());
         first.getNext().setPrevious(sentinel);
@@ -35,7 +37,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public T removeLast() {
-        if (size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
         ListNode<T> last = sentinel.getPrevious();
         sentinel.setPrevious(last.getPrevious());
         last.getPrevious().setNext(sentinel);
@@ -44,7 +48,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     private ListNode<T> getListNode(int i) {
-        if (i >= size) return null;
+        if (i >= size) {
+            return null;
+        }
         int count = 0;
         ListNode<T> curr = sentinel.getNext();
 
@@ -57,7 +63,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public T get(int i) {
-        if (i >= size) return null;
+        if (i >= size) {
+            return null;
+        }
         int count = 0;
         ListNode<T> curr = sentinel.getNext();
 
@@ -70,7 +78,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public T getRecursive(int i) {
-        if (i < 0 || i > size) return null;
+        if (i < 0 || i > size) {
+            return null;
+        }
         RecursionHelper r = new RecursionHelper();
         return r.getRecursive(i);
     }
@@ -102,12 +112,18 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     public boolean equals(Object other) {
-        if (this == other) return true;
+        if (this == other) {
+            return true;
+        }
         if (other instanceof LinkedListDeque) {
             LinkedListDeque otherL = (LinkedListDeque) other;
-            if (this.size() != otherL.size) return false;
+            if (this.size() != otherL.size) {
+                return false;
+            }
             for (int i = 0; i < size; i++) {
-                if (!get(i).equals(otherL.get(i))) return false;
+                if (!get(i).equals(otherL.get(i))) {
+                    return false;
+                }
             }
         }
         return true;
@@ -162,9 +178,9 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
 
         @Override
         public String toString() {
-            return this.value == null ?
-                    "sentinel" :
-                    this.value.toString();
+            return this.value == null
+                    ? "sentinel"
+                    : this.value.toString();
         }
     }
 

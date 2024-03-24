@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.StdDraw;
 
 
 public class GuitarHero {
-    final static String KEYBOARD = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
+    final String KEYBOARD = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
     final GuitarString[] concerts;
 
     public GuitarHero() {
@@ -17,8 +17,9 @@ public class GuitarHero {
     }
 
     public void pluckString(int i) {
-        if (i >= 0 && i < concerts.length)
+        if (i >= 0 && i < concerts.length) {
             concerts[i].pluck();
+        }
     }
 
     public double sampleSuperPosition() {
@@ -40,7 +41,7 @@ public class GuitarHero {
         while (true) {
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
-                int index = KEYBOARD.indexOf(key);
+                int index = g.KEYBOARD.indexOf(key);
                 g.pluckString(index);
             }
 
