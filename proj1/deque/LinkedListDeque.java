@@ -146,7 +146,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         private ListNode previous;
         private ListNode next;
 
-        public ListNode(T value, ListNode previous, ListNode next) {
+        ListNode(T value, ListNode previous, ListNode next) {
             this.value = value;
             this.next = next;
             this.previous = previous;
@@ -187,7 +187,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class LinkedListDequeIterator implements Iterator<T> {
         ListNode<T> curr;
 
-        public LinkedListDequeIterator() {
+        LinkedListDequeIterator() {
             this.curr = sentinel;
         }
 

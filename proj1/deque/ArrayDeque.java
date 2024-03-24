@@ -9,7 +9,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private int firstIndex;
     private int lastIndex;
 
-    public ArrayDeque() {
+    ArrayDeque() {
         capacity = 8;
         items = (T[]) new Object[capacity];
         size = 0;
@@ -146,7 +146,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         if (obj instanceof ArrayDeque) {
             ArrayDeque otherArrayDeque = (ArrayDeque) obj;
-            if (size != otherArrayDeque.size()) return false;
+            if (size != otherArrayDeque.size()) {
+                return false;
+            }
             for (int i = 0; i < size; i++) {
                 if (!get(i).equals(otherArrayDeque.get(i))) {
                     return false;
