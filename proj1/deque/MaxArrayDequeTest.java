@@ -25,7 +25,7 @@ public class MaxArrayDequeTest {
         }
         l.addLast(51);
 
-        int result = l.max(null);
+        int result = l.max();
         assertEquals(result, 51);
     }
 
@@ -84,7 +84,7 @@ public class MaxArrayDequeTest {
             l.addLast(1);
         }
 
-        assertEquals((int) l.max(null), 1);
+        assertEquals((int) l.max(), 1);
     }
 
 }
