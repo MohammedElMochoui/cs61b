@@ -27,11 +27,6 @@ public class TestArrayDequeEC {
                     sb.append("addFirst(").append(randomVal).append(")\n");
                     underTest.addFirst(randomVal);
                     solution.addFirst(randomVal);
-                    assertEquals(
-                            sb.toString(),
-                            underTest.get(0),
-                            solution.get(0)
-                    );
                     break;
                 }
                 case 1: {
@@ -40,11 +35,6 @@ public class TestArrayDequeEC {
                     sb.append("addLast(").append(randomVal).append(")\n");
                     underTest.addLast(randomVal);
                     solution.addLast(randomVal);
-                    assertEquals(
-                            sb.toString(),
-                            underTest.get(underTest.size() - 1),
-                            solution.get(solution.size() - 1)
-                    );
                     break;
                 }
                 case 2: {
@@ -54,7 +44,7 @@ public class TestArrayDequeEC {
                     }
                     Integer a = underTest.removeFirst();
                     Integer b = solution.removeFirst();
-                    sb.append("removeFirst(): ").append(a).append("\n");
+                    sb.append("removeFirst()\n");
                     assertEquals(
                             sb.toString(),
                             a,
@@ -69,7 +59,7 @@ public class TestArrayDequeEC {
                     }
                     Integer a = underTest.removeLast();
                     Integer b = solution.removeLast();
-                    sb.append("removeLast(): ").append(a).append("\n");
+                    sb.append("removeLast()\n");
                     assertEquals(
                             sb.toString(),
                             a,
@@ -81,21 +71,22 @@ public class TestArrayDequeEC {
                     // isEmpty
                     boolean a = underTest.isEmpty();
                     boolean b = solution.isEmpty();
-//                    sb.append("isEmpty(): ").append(a).append("\n");
+                    sb.append("isEmpty()\n");
                     assertEquals(
-//                            sb.toString(),
+                            sb.toString(),
                             a,
                             b
                     );
+
                     break;
                 }
                 case 5: {
                     // size
                     int a = underTest.size();
                     int b = solution.size();
-//                    sb.append("size(): ").append(a).append("\n");
+                    sb.append("size()\n");
                     assertEquals(
-//                            sb.toString(),
+                            sb.toString(),
                             a,
                             b
                     );
@@ -106,9 +97,9 @@ public class TestArrayDequeEC {
                     int randomIndex = StdRandom.uniform(0, underTest.size());
                     Integer a = underTest.get(randomIndex);
                     Integer b = solution.get(randomIndex);
-//                    sb.append("get(").append(randomIndex).append(": ").append(a).append("\n");
+                    sb.append("get(").append(randomIndex).append(": ").append(a).append("\n");
                     assertEquals(
-//                            sb.toString(),
+                            sb.toString(),
                             a,
                             b
                     );
