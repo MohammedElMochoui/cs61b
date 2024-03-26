@@ -81,7 +81,7 @@ public class TestArrayDequeEC {
                     // isEmpty
                     boolean a = underTest.isEmpty();
                     boolean b = solution.isEmpty();
-                    sb.append("isEmpty(): ").append(a).append("\n");
+//                    sb.append("isEmpty(): ").append(a).append("\n");
                     assertEquals(
 //                            sb.toString(),
                             a,
@@ -93,7 +93,7 @@ public class TestArrayDequeEC {
                     // size
                     int a = underTest.size();
                     int b = solution.size();
-                    sb.append("size(): ").append(a).append("\n");
+//                    sb.append("size(): ").append(a).append("\n");
                     assertEquals(
 //                            sb.toString(),
                             a,
@@ -106,7 +106,7 @@ public class TestArrayDequeEC {
                     int randomIndex = StdRandom.uniform(0, underTest.size());
                     Integer a = underTest.get(randomIndex);
                     Integer b = solution.get(randomIndex);
-                    sb.append("get(").append(randomIndex).append(": ").append(a).append("\n");
+//                    sb.append("get(").append(randomIndex).append(": ").append(a).append("\n");
                     assertEquals(
 //                            sb.toString(),
                             a,
